@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Facebook -->
+<meta property="og:url" content="http://www.cwb.gov.tw/V7/index.htm" />
+<meta property="og:title" content="中央氣象局全球資訊網" />
+<meta property="og:image" content="http://www.cwb.gov.tw/V7/forecast/taiwan/Data/Forecast01.png" />
+<meta property="og:image" content="http://www.cwb.gov.tw/V7/observe/satellite/Data/s1p/s1p.jpg" />
+<meta property="og:description" content="氣象局的施政與業務發展，在推動現代化氣象觀測、發展精緻化氣象預報、開創多元化氣象服務管道，以提升氣象服務水準，並達成防災減災及促進經濟發展之目標，為健康台灣提供優質氣象資訊。" />
+<title>觀測</title>
+<link href="/V7/css/CwbWebFlexable13.css" rel="stylesheet" type="text/css" media="screen, print, projection">
+<!--[if lt IE 9]>
+<link href="/V7/css/CwbWebFlexable13IE8.css" rel="stylesheet" type="text/css" media="screen, print, projection"><![endif]-->
+<!--[if lt IE 8]>
+<link href="/V7/css/CwbWebFlexable13IE7.css" rel="stylesheet" type="text/css" media="screen, print, projection"><![endif]-->
+<!--[if IE 6]><link href="/V7/css/CwbWebFlexableIE613.css" rel="stylesheet" type="text/css" media="screen, print,  projection"><![endif]-->
+<link href="/V7/css/NeoHomeContainer.css" rel="stylesheet" type="text/css" media="screen, print, projection">
+<link href="/V7/css/CwbtaiwanMap12.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link href="/V7/css/CwbWebFlexable10.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link href="/V7/css/CwbWebSven10.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link href="/V7/css/CwbWebDoris10.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link href="/V7/css/smap.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link type="text/css" href="/V7/css/custom-theme/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="/V7/css/jsonSuggest.css" type="text/css" />
+
+<script type="text/javascript" src="/V7/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/V7/js/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="/V7/js/funcTable.js"></script>
+<script type="text/javascript" src="/V7/js/stone.js"></script>
+
+<script type="text/javascript" src="/V7/js/cwb.js"></script>
+<script type="text/javascript" src="/V7/js/warning_info.js"></script>
+<script type="text/javascript" src="/V7/js/warning.js"></script>
+<script type="text/javascript" src="/V7/js/scrolltopcontrol.js"></script>
+<script language="JavaScript" src="/V7/js/HotSearch.js"></script>
+<script language="JavaScript" src="/V7/js/jquery.jsonSuggest.js"></script>
+
+<link rel="govtwsimpledc.xsd" href="http://www.gov.tw/schema/dc/govtwsimpledc.xsd" title="Dublin Core" />
+<meta name="DC.Creator" content="交通部中央氣象局" />
+<meta name="DC.Contributor" content="交通部中央氣象局" />
+<meta name="DC.Type" content="服務" />
+<meta name="DC.Format" content="text" />
+<meta name="DC.Source" content="交通部中央氣象局" />
+<meta name="DC.Language" content="中文" />
+<meta name="DC.coverage.t.min" content="2015-08-12" />
+<meta name="DC.coverage.t.max" content="2020-08-12" />
+<meta name="DC.Publisher" content="交通部中央氣象局" />
+<meta name="DC.Date" content="2015-08-12 13:52" />
+<meta name="DC.Identifier" content="315070000H" />
+<meta name="DC.Relation" content="" />
+<meta name="DC.Rights" content="交通部中央氣象局" />
+<meta name="Category.Theme" content="650" />
+<meta name="Category.Cake" content="CM0" />
+<meta name="Category.Service" content="EZ0" />
+<meta name="DC.Title" content="觀測" />
+<meta name="DC.Subject" content="觀測" />
+<meta name="DC.Description" content="觀測" />
+<meta name="Keywords" content="觀測" />
+</head>
+
+<body class="qoo" id="Observe">
+<div id="container">
+
+<script>
+$(function() {
+
+$( "#myquery" ).jsonSuggest(HotSearch);
+
+
+});
+
+</script>
+
+<div id="Header">
+<a class="CwbLogo" href="/V7/">中央氣象局</a><!--Logo-->
+<ul class="SeerchArea"><li>
+<form target="_blank" method="post" action="/V7/search/search.php">
+<input name="query" id='myquery' type="text" style='text-align:left;' name="myquery">
+<input type="submit" class="SearchBtn" value="搜尋" name="送出">
+<a class="searchAdvance" target="_blank" href="http://pweb.cwb.gov.tw:8210/cgi-bin/search/qpage.cgi?act=adv&amp;uilang=cht">進階</a>
+</form>
+</li></ul><!--SeerchArea-->
+<div id="SocialGroup">
+<ul>
+<li><a href="/V7/service/eservice/rss.htm" target="_top" class="RSS" title="RSS服務">R</a></li>
+<li><a href="/V7/service/eservice/facebook.htm" target="_top" class="FB" title="Facebook服務">F</a></li>
+<li><a href="/V7/service/eservice/pda.htm" target="_top" class="SPH" title="行動版">P</a></li>
+<li><a href="/V7/service/eservice/app.htm" target="_top" class="PDA" title="APP服務">M</a></li>
+</ul>
+</div><!--SocialGroup-->
+<div id="HeaderNavi">
+<ul>
+<li><a href="/V7/index_home.htm" target="_top" title="回首頁">回首頁</a><span>|</span></li>
+<li><a href="/V7/sitemap.htm" target="_top" title="網站導覽">導覽</a><span>|</span></li>
+<li><a href="/eng/index.htm" target="_top" title="English Version">English</a><span>|</span></li>
+<li><a href="/kids/index.htm" target="_blank" title="兒童網">兒童網</a><span>|</span></li>
+<li><a href="http://pweb.cwb.gov.tw/CWBMEMBER2/" target="_blank" title="會員登入">會員登入</a><span>|</span></li>
+<li><a href="/V7/knowledge/faq/weatherfaq.htm" target="_top" title="常見問答">常見問答</a><span>|</span></li>
+<li><a href="/V7/service/email.htm" target="_top" title="意見箱">意見箱</a><span>|</span></li>
+<li><a href="/V7/knowledge/Bilingual_Glossary.htm" target="_top" title="雙語辭彙">雙語辭彙</a></li>
+</ul>
+</div><!--HeaderNavi-->
+<div id="GlobalNavi">
+<ul>
+<li><a class="NavLife" href="/V7/life/">生活氣象</a></li><span>|</span>
+<li><a class="NavForecast" href="/V7/forecast/">預報</a></li><span>|</span>
+<li><a class="NavObserve" href="/V7/observe/">觀測</a></li><span>|</span>
+<li><a class="NavPrevent" href="/V7/prevent/">防災氣象</a></li><span>|</span>
+<li><a class="NavClimate" href="/V7/climate/">氣候</a></li><span>|</span>
+<li><a class="NavEarthquake" href="/V7/earthquake/">地震</a></li><span>|</span>
+<li><a class="NavAstro" href="/V7/astronomy/">天文</a></li><span>|</span>
+<li><a class="NavKnowledge" href="/V7/knowledge/">常識</a></li><span>|</span>
+<li><a class="NavAbout" href="/V7/about/">關於氣象局</a></li><span>|</span>
+<li><a class="NavService" href="/V7/service/">便民</a></li><span>|</span>
+<li><a class="NavMedia" href="/V7/media/">影音</a></li>
+</ul><div class="clear"></div>
+</div><!--GlobalNavi-->
+<div class="clear"></div><!--end line one-->
+</div>
+
+<div class="clear"></div><!--end line two-->
+<div class="banner-station" onclick="location.href='/V7/media/cwbmov/index.html';" style="cursor :pointer;"></div>
+<!--<div class="anniversary70">玉山觀測站70週年</div>-->
+</div>
+<div id="main">
+<div id="Navigator">
+<div class="access"><a accesskey="L" title="左方選單" href="#" class="white">:::</a></div>
+<div class="through clearfix">
+<script language="JavaScript">show_warning();</script>
+<script type="text/javascript" src="/V7/js/stone-current_index_leftmenu.js"></script>
+<script>
+function go(obj)
+{
+obj.href += "?type=" + newsid;
+}
+</script>
+<ul style="display: block;" class="Report">
+<h3>觀測</h3>
+<li class="levOne"><a href="/V7/observe/real/index_N.htm" class="Observe10">目前天氣</a></li>
+<ul>
+<li><a href="/V7/observe/real/index_N.htm" class="Observe11">北部</a></li>
+<li><a href="/V7/observe/real/index_C.htm" class="Observe12">中部</a></li>
+<li><a href="/V7/observe/real/index_S.htm" class="Observe13">南部</a></li>
+<li><a href="/V7/observe/real/index_E.htm" class="Observe14">東部</a></li>
+<li><a href="/V7/observe/real/index_I.htm" class="Observe15">外島</a></li>
+<li><a href="/V7/observe/real/ALLData.htm" class="Observe16">全區</a></li>
+</ul>
+<li class="levOne"><a href="/V7/observe/rainfall/hk.htm" class="Observe20">雨量觀測</a></li>
+<ul>
+<li><a href="/V7/observe/rainfall/hk.htm" class="Observe21">日累積圖</a></li>
+<li><a href="/V7/observe/rainfall/hq.htm" class="Observe22">小時累積圖</a></li>
+<li><a href="/V7/observe/rainfall/ha_100.htm" class="Observe23">前100名資料</a></li>
+<li><a href="/V7/observe/rainfall/A136.htm" target=_blank class="Observe24">十分鐘資料</a></li>
+<li><a href="/V7/observe/rainfall/Rain_Hr/" target=_blank class="Observe27">整點小時資料</a></li>
+<li><a href="/V7/observe/rainfall/Q22.htm" class="Observe25">各縣市最大值</a></li>
+<li><a href="/V7/observe/rainfall/area.htm" class="Observe26">區域圖</a></li>
+<li><a href="/V7/observe/rainfall/dam.htm" class="Observe28">雨量與水庫情形</a></li>
+</ul>
+<li class="levOne"><a href="/V7/observe/real/windAll.htm" class="Observe30" target=_blank>風速觀測</a></li>
+<li class="levOne"><a href="/V7/observe/satellite/Sat_T.htm" onclick='go(this);' class="Observe40">衛星雲圖</a></li>
+<ul>
+<li><a href="/V7/observe/satellite/Sat_W.htm" onclick='go(this);' class="Observe41">全球</a></li>
+<li><a href="/V7/observe/satellite/Sat_EA.htm" onclick='go(this);' class="Observe42">東亞</a></li>
+<li><a href="/V7/observe/satellite/Sat_T.htm" onclick='go(this);'  class="Observe43">臺灣</a></li>
+<li><a href="/V7/observe/satellite/Sat_H_EA.htm" onclick='go(this);' target="_blank" class="Observe44">高解析</a></li>
+</ul>
+<li class="levOne"><a href="/V7/observe/radar/" onclick='go(this);' class="Observe50">雷達回波</a></li>
+<ul>
+<li><a href="/V7/observe/radar/" onclick='go(this);' class="Observe51">臺灣</a></li>
+<li><a href="/V7/observe/radar/index_N.htm" onclick='go(this);' class="Observe52">北臺灣</a></li>
+<li><a href="/V7/observe/radar/index_S.htm" onclick='go(this);' class="Observe53">南臺灣</a></li>
+</ul>
+<li class="levOne"><a href="/V7/observe/marine/" class="Observe60">即時海況</a></li>
+
+<li class="levOne"><a href="/V7/observe/temperature/" class="Observe70">溫度分布</a></li>
+
+<li class="levOne"><a href="/V7/observe/UVI/UVI.htm" class="Observe80">紫外線</a></li>
+<ul>
+<li><a href="/V7/observe/UVI/UVI.htm" class="Observe81">即時測報</a></li>
+<li><a href="/V7/observe/UVI/UVI_Max.htm" class="Observe82">今日最大值</a></li>
+<li><a href="/V7/observe/UVI/UVI_Hist.htm" class="Observe83">歷史資料</a></li>
+</ul>
+<li class="levOne"><a href="/V7/observe/webcam/" class="Observe90">即時影像</a></li>
+<li class="levOne"><a href="/V7/observe/wmtp/sst.htm" class="ObserveA0">海溫分析</a></li>
+<ul>
+<li><a href="/V7/observe/wmtp/sst.htm" class="ObserveA1">分析時序圖</a></li>
+<li><a href="/V7/observe/wmtp/taiwan.htm" class="ObserveA2">臺灣</a></li>
+<li><a href="/V7/observe/wmtp/pacific.htm" class="ObserveA3">太平洋</a></li>
+</ul>
+<!--
+<li class="levOne"><a href="#" class="ObserveA0">海象統計</a></li>
+<ul>
+<li><a href="/V7/observe/marine_stat/tide.htm" class="ObserveA1">潮位統計</a></li>
+<li><a href="/V7/observe/marine_stat/wtmp.htm" class="ObserveA2">海溫統計</a></li>
+<li><a href="/V7/observe/marine_stat/wave.htm" class="ObserveA3">波浪統計</a></li>
+</ul>
+-->
+<li class="levOne"><a href="/V7/observe/phRain/" class="ObserveB0">雨水pH值</a></li>
+<li class="levOne"><a href="/V7/observe/oZone/oZone_01.htm" class="ObserveC0">臭氧觀測</a></li>
+<ul>
+<li><a href="/V7/observe/oZone/oZone_01.htm" class="ObserveC1">成功</a></li>
+<li><a href="/V7/observe/oZone/oZone_02.htm" class="ObserveC2">臺北</a></li>
+</ul>
+
+<li class="levOne"><a href="http://taqm.epa.gov.tw/pm25/" target="_blank" class="ObserveD0">環保署PM2.5(細懸浮微粒)監測網</a></li>
+</ul>
+
+</div>
+</div>
+<div id="content">
+<div id="content_inner">
+<div class="access ie6acc"><a accesskey="C" title="主要內容區" href="#">:::</a></div>
+<script type="text/javascript" language="javascript">
+$(function () {
+MY_POS="4";
+MY_ID=".Observe51";
+HideLevOne(MY_POS);
+$(".levOne").eq(MY_POS).next().show();
+$(".levOne").eq(MY_POS).next().find(MY_ID).css("color", "#69af0f");
+
+$(".levOne").click(function(){
+$(".levOne").eq(MY_POS).next().find(MY_ID).css("color", "#69af0f");
+});
+});
+
+</script>
+
+<script> document.title='臺灣雷達回波';</script>
+<script src="/V7/life/js/jquery.selectboxes.js"></script>
+<script src="/V7/js/MOS_1024.js"></script>
+<script src="/V7/js/MOS2_1024.js"></script>
+<script src="/V7/js/LoopRadar.js"></script>
+<script src="/V7/js/Data_News.js"></script>
+<script>
+
+$(function() {
+
+
+urlinfo=window.location.href;
+len=urlinfo.length;
+offset=urlinfo.indexOf("?");
+newsidinfo=urlinfo.substr(offset+1,len);
+varss=newsidinfo.split("&");
+for(i=0;i<varss.length;i++) {
+newsids=varss[i].split("=");
+if(newsids[0]=='type') newsid=newsids[1];
+}
+
+
+if(newsid == '0')
+SelectArea(MOS_1024, '0');
+else
+SelectArea(MOS2_1024, '1');
+
+});
+
+function selchange() {
+Stop_Loop();
+PrepareLoop(loop_hour);
+}
+
+</script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-43201123-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+<div id="NavPath">
+<a href="/V7/">首頁</a><span>&gt;</span> <a href="/V7/observe/">天氣觀測</a> <span>&gt;</span> <a href="index.htm" onclick='go(this);'>雷達回波</a><span>&gt;</span> <a href="index.htm" onclick='go(this);' class="currentPage">臺灣</a>
+<div class="clear"></div>
+</div><!--Path -->
+
+
+<div class="ContainerSix">
+
+<!--中間區塊 開始-->
+
+<BR>
+<table>
+<tr><td width=230>
+<div style="padding-left:10px">
+
+<table class="Raintable" border="0" summary="版面排版">
+<tbody>
+<tr><td colspan=2><script>show_NEWS();</script></td></tr>
+<tr>
+<td width="70" align="center"><a href="#" onclick="SelectArea(MOS_1024,'0')"><img title="有地形" border="0" alt="有地形" src="/V7/images/observe/radar/MOS.jpg" height="50" width="50" /></a></td>
+<td width="67" align="center"><a href="#" onclick="SelectArea(MOS2_1024,'1')"><img title="無地形" border="0" alt="無地形" src="/V7/images/observe/radar/2MOS0.jpg" height="50" width="50" /></a></td>
+</tr>
+<tr>
+<td align="center">有地形</td>
+<td align="center">無地形</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+<div style="width:180px;padding-left:10px">
+<input id="loop" onkeypress="PrepareLoop(0)" onclick="PrepareLoop(0)" value="0" checked="checked" type="radio" name="loop" />
+單張顯示(靜態)<br /><br />
+<select id="sel" name="sel" onchange='selchange();'>
+</select>
+<br />
+<br />
+動態顯示<br />
+<input id="loop" onkeypress="PrepareLoop(2)" onclick="PrepareLoop(2)" value="2" type="radio" name="loop" />2 小時        
+<input id="loop" onkeypress="PrepareLoop(3)" onclick="PrepareLoop(3)" value="3" type="radio" name="loop" />3 小時<br />
+<input id="loop" onkeypress="PrepareLoop(4)" onclick="PrepareLoop(4)" value="4" type="radio" name="loop" />4 小時
+<p>&nbsp; </p>
+
+<p>雷達回波顏色說明<br /><span id='radar_desp' style='border:0px'>(有地形)</span><br />
+<img id='radar_image' title="雷達回波顏色圖例(有地形)" border="0"  align="center" src="/V7/images/info/colorbar_WWWradar.jpg" width="160" height="40" /></p>
+
+
+<p>僅約略呈現空中雲雨系統含水量〈包括三態之水〉的分布情形，不能直接換算成地面降水量的多寡。</p>
+<!--雷達站維護檢修公告，詳細資訊請參考<a href=/V6/news/news_data.htm target=content>「最新消息」</a>。-->
+<p><a title="雷達設置地點與有效範圍" href="radar_coverage.htm" style="color:#0054a6;"><U>雷達設置地點與有效範圍</U></a></p>
+<p>
+<!-- 2010-10-21 依局務會報指示新增說明 -->
+<U>氣象雷達合成圖製作流程</U>：例如   00（時）:00（分）:00（秒）氣象雷達開始掃描觀測，00:07:30掃描結束，因需等所有雷達資料傳達至資料處理主機，故00:10:00開始製作合成圖，合成圖標示時間則為00時:00分。00:11:05可將製作完成的合成圖傳送下游各伺服主機，網頁伺服主機經處理及傳送，約00:14:00可完成網頁資料更新。所以約於氣象雷達開始掃描15分鐘後，於本局網頁上可看到新的雷達合成圖。若無法看到最新雷達圖，建議利用「重新整理」功能來更新資料的顯示。</p>
+
+</div>
+</td><td valign=top>
+
+<img alt="雷達回波圖" name="im" width="600" id="im" title="雷達回波圖" />
+</td></tr>
+</table>
+
+<!--中間區塊 結束 //-->
+</div>
+
+
+<div style="clear:both"></div><!--清除浮動div -->
+</div>
+</div>
+</div>
+<div id="Footer">
+<div id="Footermenu">
+<div id="Footerlist" class="NavLife">
+<ul><h4>生活氣象</h4>
+<li><a href="/V7/life/GoodFriend.htm">生活好朋友</a></li>
+<li><a href="/V7/life/Life.htm">生活氣象</a></li>
+<li><a href="/V7/life/Entertainment.htm">育樂氣象</a></li>
+<li><a href="http://app.cwb.gov.tw/SEV_checkin/" target="_blank">打卡報天氣</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavForecast">
+<ul><h4>預報</h4>
+<li><a href="/V7/forecast/">天氣預報</a></li>
+<li><a href="/V7/service/member/reserve/reserve.htm">預約氣象</a></li>
+<li><a href="/V7/forecast/fishery/FSea.htm">漁業氣象</a></li>
+<li><a href="/V7/forecast/bluehighway/">藍色公路</a></li>
+<li><a href="/V7/forecast/world/world_aa.htm">國際都市</a></li>
+<li><a href="/V7/forecast/fcst/I04.htm">分析及預測圖</a></li>
+<li><a href="/V7/forecast/long/long_month.htm">長期預報</a></li>
+<li><a href="/V7/forecast/nwp/nwp.htm">數值預報</a></li>
+<li><a href="/V7/forecast/talkweather/talkweather.htm">預報主任談天氣</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavObserve">
+<ul><h4>觀測</h4>
+<li><a href="/V7/observe/real/index_N.htm">目前天氣</a></li>
+<li><a href="/V7/observe/rainfall/hk.htm">雨量觀測</a></li>
+<li><a href="/V7/observe/real/windAll.htm" target="_blank">風速觀測</a></li>
+<li><a href="/V7/observe/satellite/Sat_EA.htm">衛星雲圖</a></li>
+<li><a href="/V7/observe/radar/">雷達回波</a></li>
+<li><a href="/V7/observe/marine/">即時海況</a></li>
+<li><a href="/V7/observe/temperature/">溫度分布</a></li>
+<li><a href="/V7/observe/UVI/UVI.htm">紫外線</a></li>
+<li><a href="/V7/observe/webcam/">即時影像</a></li>
+<li><a href="/V7/observe/wmtp/sst.htm">海溫分析</a></li>
+<li><a href="/V7/observe/phRain/">雨水pH值</a></li>
+<li><a href="/V7/observe/oZone/oZone_02.htm">臭氧觀測</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavPrevent">
+<ul><h4>防災氣象</h4>
+<li><a href="/V7/prevent/warning.htm">天氣警特報</a></li>
+<li><a href="/V7/earthquake/">地震報告</a></li>
+<li><a href="http://qpesums.cwb.gov.tw/" target="_blank" alt="將另開新視窗" title="將另開新視窗">降雨監測系統</a></li>
+<li><a href="/V7/prevent/typhoon/ty.htm?">颱風消息</a></li>
+<li><a href="http://rdc28.cwb.gov.tw/TDB/ntdb/pageControl/ty_warning" target="_blank" alt="將另開新視窗" title="將另開新視窗">歷史颱風</a></li>
+<li><a href="http://rdc28.cwb.gov.tw" target="_blank" alt="將另開新視窗" title="將另開新視窗">颱風資料庫</a></li>
+<li><a href="/V7/prevent/typhoon_surge/">颱風暴潮預報</a></li>
+<li><a href="/V7/prevent/typhoon_surge/watch.htm">海象暴潮監測</a></li>
+<li><a href="/V7/prevent/TSU2.htm">海嘯資訊</a></li>
+<li><a href="/V7/prevent/plan/conference/plan.htm">防災專區</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavClimate">
+<ul><h4>氣候</h4>
+<li><a href="/V7/climate/dailyPrecipitation/dP.htm">氣候統計</a></li>
+<li><a href="/V7/climate/watch/watch.htm">氣候監測</a></li>
+<li><a href="/V7/climate/agri/agrb.htm">農業氣象</a></li>
+<li><a href="/V7/climate/climate_info/backgrounds/backgrounds_1.html">氣候話題</a></li>
+<li><a href="/V7/climate/climate_info/statistics/statistics_1_1.html">臺灣氣候</a></li>
+<li><a href="/V7/climate/watch/watch.htm">監測紀要</a></li>
+<li><a href="/V7/climate/climate_info/forecast/forecast_1.html">短期氣候預測</a></li>
+<li><a href="/V7/climate/climate_info/information/information_1.html">研習與推廣</a></li>
+<li><a href="/V7/climate/climate_info/other-subject/other-subject_1_1.html">主題報導</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavEarthquake">
+<ul><h4>地震</h4>
+<li><a href="/V7/earthquake/quake_index.htm">最近地震</a></li>
+<li><a href="/V7/earthquake/rtd_eq.htm">地震活動彙整</a></li>
+<li><a href="/V7/earthquake/quake_world.htm">全球地震</a></li>
+<li><a href="/V7/knowledge/encyclopedia/eq000.htm">地震百問</a></li>
+<li><a href="/V7/earthquake/research.htm">技術報告</a></li>
+<li><a href="/V7/earthquake/accsta.htm">測站</a></li>
+<li><a href="/V7/earthquake/quake_preparedness.htm">地震防護</a></li>
+<li><a href="/V7/earthquake/damage_eq.htm">災害地震</a></li>
+<li><a href="/V7/earthquake/talk.htm">地震話題</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavAstro">
+<ul><h4>天文</h4>
+<li><a href="/V7/astronomy/sky.php">每月星象</a></li>
+<li><a href="/V7/astronomy/observation.htm">天文觀測</a></li>
+<li><a href="/V7/astronomy/calendar.htm">曆象資料</a></li>
+<li><a href="/V7/astronomy/hotlink.htm">星際之旅</a></li>
+<li><a href="/V7/astronomy/sunrise.htm">日出日沒</a></li>
+<li><a href="/V7/astronomy/moonrise.htm">月出月沒</a></li>
+<li><a href="/V7/astronomy/picture/phenomenon.htm">臺灣的星空</a></li>
+<li><a href="/V7/astronomy/twilight.htm">曙暮光時刻</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavKnowledge">
+<ul><h4>常識</h4>
+<li><a href="/V7/knowledge/encyclopedia/me000.htm">氣象百科</a></li>
+<li><a href="/V7/astronomy/sky.php">天文星象</a></li>
+<li><a href="/V7/knowledge/announce/announce.htm">宣導</a></li>
+<li><a href="/V7/knowledge/planning/index.htm" target="_blank" alt="將另開新視窗" title="將另開新視窗">特輯</a></li>
+<li><a href="/V7/knowledge/themedis.htm">主題專訪</a></li>
+<li><a href="/V7/knowledge/overview1.htm">氣象現代化</a></li>
+<li><a href="/V7/knowledge/Bilingual_Glossary.htm">雙語辭彙</a></li>
+<li><a href="/V7/knowledge/faq/weatherfaq.htm">常見問答</a></li>
+<li><a href="/V7/knowledge/faq/hottopic.htm">討論話題</a></li>
+<li><a href="/V7/knowledge/satellite_topics/truecolor.htm">衛星雲圖精選</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavAbout">
+<ul><h4>關於氣象局</h4>
+<li><a href="/V7/about/DG_Message.htm">局長的話</a></li>
+<li><a href="/V7/about/History.htm">組織簡介</a></li>
+<li><a href="/V7/about/Missions.htm">重要業務</a></li>
+<li><a href="/V7/about/Strategic_Plan.htm">施政目標</a></li>
+<li><a href="/V7/about/Organization.htm">組織架構</a></li>
+<li><a href="/V7/about/news_data.htm">最新消息</a></li>
+<li><a href="/V7/about/performance.htm">服務績效</a></li>
+<li><a href="/V7/about/yearpaper.htm">年報</a><li>
+<li><a href="/V7/about/gender/index.htm" target="_blank" alt="將另開新視窗" title="將另開新視窗">性別主流化</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavService">
+<ul><h4>便民</h4>
+<li><a href="http://south.cwb.gov.tw" target="_blank" alt="將另開新視窗" title="將另開新視窗">南區氣象服務</a></li>
+<li><a href="/V7/service/notice.htm">政府資訊</a></li>
+<li><a href="/V7/service/publication.htm">出版品</a></li>
+<li><a href="/V7/service/Service_Guide.htm">服務窗口</a></li>
+<li><a href="http://e-service.cwb.gov.tw/wdps/" target="_blank" alt="將另開新視窗" title="將另開新視窗">資料申購</a></li>
+<li><a href="http://exas.cwb.gov.tw/exas_service/ViewFormState.aspx" target="_blank" alt="將另開新視窗" title="將另開新視窗">儀器送校查詢</a></li>
+<li><a href="/V7/service/download.htm">下載專區</a></li>
+<li><a href="/V7/service/service.htm">多元服務</a></li>
+<li><a href="/V7/service/doc.htm">公文附件下載</a></li>
+<li><a href="/V7/service/Polls.htm">滿意度調查</a></li>
+<li><a href="/V7/service/hotlink1.htm">好站介紹</a></li>
+<li><a href="http://opendata.cwb.gov.tw" target="_blank">氣象局開放資料平臺</a></li>
+</ul>
+</div>
+<div id="Footerlist" class="NavMedia">
+<ul><h4>影音</h4>
+<li><a href="/V7/media/">氣象影音頻道</a></li>
+<li><a href="/V7/media/education.htm">宣導短片</a></li>
+<li><a href="/V7/media/animation/sat/cloud.htm">專題動畫</a></li>
+</ul>
+</div>
+</div>
+<div id="Footer">
+<div class="FooterIn">
+<div class="FooterContentOne">
+
+<ul>
+<li>好站介紹</li>
+<li>‧<a href="/V7/service/hotlink1.htm">政府相關部門</a></li>
+<li>‧<a href="/V7/service/hotlink2.htm">學術研究單位</a></li>
+<li>‧<a href="/V7/service/hotlink3.htm">國際作業研究相關組織</a></li>
+<li>‧<a href="/V7/service/hotlink4.htm">其他相關站台</a></li>
+</ul>
+</div>
+<div class="FooterContentThree">
+<ul>
+<li><a href="/V7/private.htm">隱私權保護政策</a><span>|</span></li>
+<li><a href="/V7/security.htm">資訊安全政策</a><span>|</span></li>
+<li><a href="/V7/information.htm">網站資訊使用聲明</a><span>|</span></li>
+<li><a href="/V7/pi_secure.pdf" title="個人資料保護專區pdf,將會另開新視窗">個人資料保護專區</a></li>
+</ul>
+<address>08:30至下午05:30 <span>地址：10048臺北市中正區公園路64號</span>     總機：(02)2349-1000(代表號)  氣象查詢：(02)2349-1234  地震查詢：(02)2349-1168<br />
+瀏覽器版本：建議使用 IE6.0 或 Firefox1.0.1 以上 最佳解析度：1024X768      中華民國交通部中央氣象局 版權所有 非經授權禁止轉載      本網站參考時間：臺灣標準時間TST(GMT +08:00)</address>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+

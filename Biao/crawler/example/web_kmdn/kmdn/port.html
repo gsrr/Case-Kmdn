@@ -1,0 +1,21 @@
+<html>
+    
+    <script>
+        $("document").ready(function(){
+            function showTable(ret)
+            {
+                $("#weather_table").append(ret['data']);
+            }
+            paras = {
+                'prog' : 'kmdnShow',
+                'op' : 'show',
+                'name' : $("select option:selected").val(),
+            }
+            callPython(paras, showTable);
+        });
+    </script>
+    <body>
+        <div id="weather_table"></div>
+    </body>
+
+</html>
