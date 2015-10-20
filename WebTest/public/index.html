@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+       
+        <title>KMDN</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      
+        <style>
+            .center {
+                margin: auto;
+                width: 60%;
+                #border:3px solid #8AC007;
+                padding: 10px;
+                
+            }
+            .outRange{
+                margin-top:50px;
+            }
+            .func {
+                margin: 10px;
+            }
+              #feedback { font-size: 1.4em; }
+              #selectable .ui-selecting { background: #FECA40; }
+              #selectable .ui-selected { background: #F39814; color: white; }
+              #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+              #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+              
+             #login_btn{
+                 backgroundColor: #6699ff,
+                 color: rgb(255, 255, 255),
+             }
+        </style>
+        
+        <script>
+            var FB;
+            function myFacebookLogin()
+            {
+                 FB.login(function(response) {
+                    if (response.authResponse) {
+                     console.log('Welcome!  Fetching your information.... ');
+                     FB.api('/me', function(response) {
+                       console.log('Good to see you, ' + response.name + '.');
+                       console.log(response);
+                       $("#user").html(response.name);
+                       $("#login_btn").hide();
+                     });
+                    } else {
+                     console.log('User cancelled login or did not fully authorize.');
+                    }
+                });
+            }
+            $("document").ready(function(){
+                function createButton(buttons)
+                {
+                    for(var i = 0 ; i < buttons.length ; i++)
+                    {
+                        console.log(buttons[i]);
+                        $("#bts").append($("<button class=\"func\"></button>").html(buttons[i]));
+                        
+                    }
+                    $("button").button();
+                    
+                }
+                var buttons = [
+                    "金門日報",
+                    "氣象",
+                    "公車站",
+                    "飛機即時起降",
+                ];
+                $( "#selectable" ).selectable();
+                 $( "button" ).button();
+                 $("#login_btn").css("color",'blue');
+            });
+            
+           
+            window.fbAsyncInit = function() {
+                FB.init({
+                  appId      : '846091538840474',
+                  xfbml      : true,
+                  version    : 'v2.5' 
+                });
+               
+                
+            };
+            (function(d, s, id){
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/en_US/sdk.js";
+                 fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </head>
+    <body>
+        <div class="w3-padding w3-xlarge w3-teal center outRange">
+        <button id="login_btn" onclick="myFacebookLogin()" style="color:#ffffff; background-color:#6699ff;">Login with Facebook</button>
+        <label id="user"></label>
+        點數:
+        </div>
+        <div id="bts" class="w3-container center"> 
+             <ol id="selectable">
+              <li class="ui-widget-content">金門日報</li>
+              <li class="ui-widget-content">氣象</li>
+              <li class="ui-widget-content">公車站</li>
+              <li class="ui-widget-content">飛機即時起降</li>
+              <li class="ui-widget-content">Item 5</li>
+              <li class="ui-widget-content">Item 6</li>
+              <li class="ui-widget-content">Item 7</li>
+            </ol>
+        </div>
+        <div class="w3-container center">
+        <button class="w3-jumbo w3-btn w3-teal">A-1</button>
+        <button class="w3-jumbo w3-btn w3-teal">A-2</button>
+        <button class="w3-jumbo w3-btn w3-teal">A-3</button>
+        </div>
+
+    </body>
+</html> 
