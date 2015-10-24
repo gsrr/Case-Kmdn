@@ -8,6 +8,8 @@
       <script src="//code.jquery.com/jquery-1.10.2.js"></script>
       <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
       <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+      <script type="text/javascript" src="js/parse_lib.js"></script>
+      <script type="text/javascript" src="js/kmdn_news.js"></script>
       <style>
          .center {
          margin: auto;
@@ -32,45 +34,93 @@
          }
       </style>
       <script>
+        
+        
+        
         Parse.initialize("mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT", "2Xpjqqtz71ab31Hp9jHRARW7t7jaaBjjnZRJy77o");
          function myFacebookLogout()
          {
             console.log(Parse.User.current());
             alert("myFacebookLogout");
             Parse.User.logOut();
-            console.log(Parse.User.current());
+            $("#login_btn").show();
+            $("#user").html("");
+            $("#user_points").html("");
+            $("#logout_btn").hide();
+            
          }
          function myFacebookLogin()
          {
-             
+            var $user;
+            function showUserPoint(points)
+            {
+                $("#user_points").html("點數:" + points)
+            }
+            function createUser(data)
+            {
+                 paraList = {
+                    "user" : $user['id'], 
+                 }
+                 callCloud("createUser", paraList, showUserPoint);
+            }
+             function checkUserId(data)
+            {
+                console.log(data);
+                console.log(data.length);
+                if (data.length == 0)
+                {
+                    createUser(data);
+                    
+                }
+                else
+                {
+                    console.log(data[0].get("points"));
+                    showUserPoint(data[0].get("points"));
+                }
+            }
+            function initUserPoint_ret(data)
+            {
+                
+                console.log(data);
+            }
+            function initUserPoint(user)
+            {
+                alert("initUserPoint");
+                console.log(user);
+                callCloud("initUserPoint", {'user':user['id']}, initUserPoint_ret);
+            }
              alert("myFacebookLogin");
               Parse.FacebookUtils.logIn(null, {
                success: function(user) {
-                 console.log(user);
+                 $user = user;
+                 console.log($user);
                  if (!user.existed()) {
-                   console.log(user['id']);
                    alert("User signed up and logged in through Facebook!");
+                   initUserPoint($user);
                  } else {
                    alert("User logged in through Facebook!");
                    console.log(Parse.User.current());
                  }
-                 $("#user").html(user['id']);
+                 $("#user").html($user['id']);
                  $("#login_btn").hide();
+                 $("#logout_btn").show();
                  // find user point
                  
+                 
+                 paraList = {
+                    "key": "user", 
+                    "value" : {
+                        __type: "Pointer",
+                        className: "_User",
+                        objectId: $user['id']
+                    },
+                 }
+                 callCloud("queryUser", paraList, checkUserId);
                },
                error: function(user, error) {
                  alert("User cancelled the Facebook login or did not fully authorize.");
                }
              });
-             // Parse.initialize("mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT", "2Xpjqqtz71ab31Hp9jHRARW7t7jaaBjjnZRJy77o");
-            // Parse.Cloud.run('hello', {}, {
-              // success: function(ratings) {
-                // console.log(ratings)
-              // },
-              // error: function(error) {
-              // }
-            // });
          }
            
                window.fbAsyncInit = function() {
@@ -106,15 +156,14 @@
                  $("button").button();
                  
              }
-             var buttons = [
-                 "金門日報",
-                 "氣象",
-                 "公車站",
-                 "飛機即時起降",
-             ];
-             $( "#selectable" ).selectable();
+             $( ".selector" ).selectable({
+                  selected: function( event, ui ){}
+                });
               $( "button" ).button();
               $("#login_btn").css("color",'blue');
+              $("#logout_btn").css("color",'blue');
+              $("#logout_btn").hide();
+              $("#kmdn_news").click(kmdn_news);
          });
       </script>
    </head>
@@ -122,16 +171,16 @@
       <div class="w3-padding w3-xlarge w3-teal center outRange">
          <button id="login_btn" onclick="myFacebookLogin()" style="color:#ffffff; background-color:#6699ff;">Login with Facebook</button>
          <label id="user"></label>
-         <label id="user_points"></label>
-         <button id="logout_btn" onclick="myFacebookLogout()" style="color:#ffffff; background-color:#6699ff;">Logout</button>
+        <label id="user_points"></label>
+        <button id="logout_btn" onclick="myFacebookLogout()" style="color:#ffffff; background-color:#6699ff;">Logout</button>
       </div>
       <div id="bts" class="w3-container center">
          <ol id="selectable">
-            <li class="ui-widget-content">金門日報</li>
+            <li class="ui-widget-content" id="kmdn_news">金門日報</li>
             <li class="ui-widget-content">氣象</li>
             <li class="ui-widget-content">公車站</li>
             <li class="ui-widget-content">飛機即時起降</li>
-            <li class="ui-widget-content">Item 5</li>
+            <li class="ui-widget-content" id="test_module">test Module</li>
             <li class="ui-widget-content">Item 6</li>
             <li class="ui-widget-content">Item 7</li>
          </ol>
