@@ -18,7 +18,8 @@ class Desc(State):
         if "Body end" in line:
             cxt.changeState('end')
         else:
-            cxt.ret.append(line)
+            if cxt.ret.has_key('content') == False:
+                cxt.ret['content'] = line
 
 class Image(State):
     def do(self, paras):
@@ -29,7 +30,8 @@ class Image(State):
         else:
            m = re.search("<img.+'", line)
            if m != None:
-               cxt.ret.append( m.group(0).split()[1].lstrip('src=').strip("'"))
+               #cxt.ret.append( m.group(0).split()[1].lstrip('src=').strip("'"))
+               cxt.ret['image'] = m.group(0).split()[1].lstrip('src=').strip("'")
     
 
 class Start(State):
@@ -55,7 +57,7 @@ class Context:
             'end' : End(),
         }
         self.state = self.state_map['start']
-        self.ret = []
+        self.ret = {}
 
     def changeState(self, state):
         self.state = self.state_map[state]
