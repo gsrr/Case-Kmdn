@@ -53,8 +53,9 @@ def main(name):
                     cnt += 1
                     while "--end--" not in lines[cnt]:
                         line = lines[cnt].strip()
-                        key = line.split("=")[0]
-                        value = line.split("=")[1]
+                        arrline = line.split("=",1)
+                        key = arrline[0]
+                        value = arrline[1]
                         data[key] = value
                         cnt += 1
                     print insertData(name, data, cont_list)

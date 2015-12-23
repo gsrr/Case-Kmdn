@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "WebTest": {
+      "applicationId": "mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT"
+    },
+    "_default": {
+      "link": "WebTest"
+    }
+  }
+}
