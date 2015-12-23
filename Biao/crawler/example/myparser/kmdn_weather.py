@@ -32,8 +32,17 @@ class Parser:
 
     def write(self, result):
         with open("result/kmdn_weather.result", "w") as fw:
+            fw.write("--start--\n")
+            title = ""
+            content = ""
             for item in result:
-                fw.write(item)
+                searchObj = re.search(r'<tr><th>(.*?)</th>', item, re.M|re.I|re.S)
+                if searchObj:
+                    title = searchObj.group(1)
+                content += item
+            fw.write("title=" + title + "\n")
+            fw.write("table=" + content + "\n")
+            fw.write("--end--\n")
 
     def start(self):
         self.parse()
