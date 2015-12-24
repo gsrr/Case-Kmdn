@@ -90,11 +90,11 @@ Kmdn.prototype.buyGoods = function(objectId, user)
     callCloud("buyGoods", {"objectId":objectId}, cbk_buyGoods);
 }
 
-Kmdn.prototype.openMovie = function()
+Kmdn.prototype.openGoods = function(id)
 {
-    function cbk_movie(data)
+    function cbk_goods(data)
     {
-            var tb = $("#tb_movieTable").find("tbody");
+            var tb = $("#tb_storeTable").find("tbody");
             tb.empty();
             for(var i = 0 ; i < data.length ; i++)
             {
@@ -113,21 +113,41 @@ Kmdn.prototype.openMovie = function()
             }
             $(".movies").click(buyGood);
     }
-    callCloud("getGoods", {"store":"kmdn_movie"}, cbk_movie);
+    callCloud("getGoods", {"store": id}, cbk_goods);
 }
 
 Kmdn.prototype.openStore = function()
 {
-    function cbk_store(data)
-    {
-        console.log(data);
-        for(var i = 0 ; i < data.length ; i++)
+        function showStores()
         {
-            console.log(data[i].get("name"));
-            console.log(data[i].get("realName"));
+                function kmdnGoods(id)
+                {
+                        var kmdn = new Kmdn();
+                        kmdn.openGoods(id);
+                }
+
+                $(".stores").removeClass("active");
+                $(this).addClass("active");
+                var id = $(this).attr("id");
+                kmdnGoods(id);
         }
-    }
-    callCloud("getAllStore", {}, cbk_store);
+        function cbk_store(data)
+        {
+                var list_store = $("#list_store");
+                list_store.empty();
+                for(var i = 0 ; i < data.length ; i++)
+                {
+                        console.log(data[i].get("name"));
+                        console.log(data[i].get("realName"));
+
+                        var a_tag = $("<a>", {"href" : "#", "class" : "list-group-item stores", "data-toggle" : "modal", "data-target" : "#modal_store"});
+                        a_tag.attr("id", data[i].get("name"));
+                        a_tag.html(data[i].get("realName"));
+                        list_store.append(a_tag);
+                }
+                $(".stores").click(showStores);
+        }
+        callCloud("getAllStore", {}, cbk_store);
 }
 
 Kmdn.prototype.openWeather = function()
