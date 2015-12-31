@@ -21,7 +21,9 @@ class Parser:
 
     def write(self,result):
         with open("result/kmdn_uv.result", "w") as fw:
-            fw.write(result)
+            fw.write("--start--\n")
+            fw.write("title=" + result + "\n")
+            fw.write("--end--\n")
         
     def start(self):
         self.parse()

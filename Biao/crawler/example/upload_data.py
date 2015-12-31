@@ -9,6 +9,8 @@ Api_key = "2iECCPZtci4c8MER1Jy14FwOw3AmKUlbq3a7Cgrr"
 classMap = {
     "kmdn_news" : "/1/classes/NewsInfo",
     "kmdn_weather" : "/1/classes/WeatherInfo",
+    "kmdn_radar" : "/1/classes/RadarInfo",
+    "kmdn_uv" : "/1/classes/UVInfo",
 }
 
 def queryData(name, id_name):
