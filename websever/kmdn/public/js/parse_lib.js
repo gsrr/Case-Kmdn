@@ -4,7 +4,6 @@ function callCloud(func, paraList, callback)
     Parse.initialize("mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT", "2Xpjqqtz71ab31Hp9jHRARW7t7jaaBjjnZRJy77o");
     Parse.Cloud.run(func, paraList,{
         success: function(data) {
-            alert("call Cloud Successful");
             callback(data);
         },
         error: function(error) {

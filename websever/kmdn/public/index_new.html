@@ -106,6 +106,12 @@ function kmdnWeather()
         kmdn.openWeather();
 
 }
+function kmdnRadar(id, title)
+{
+        var kmdn = new Kmdn();
+        kmdn.openRadar(id, title);
+
+}
 
 $(document).ready(function(){
         if (Parse.User.current() != null)
@@ -135,6 +141,14 @@ $(document).ready(function(){
                 else if (id == "kmdn_weather")
                 {
                         kmdnWeather();
+                }
+                else if (id == "kmdn_radar")
+                {
+                        kmdnRadar(id, "雷達回波");
+                }
+                else if (id == "kmdn_uv")
+                {
+                        kmdnRadar(id, "紫外線指數");
                 }
         }
 
@@ -181,6 +195,8 @@ $(document).ready(function(){
                         <div class="list-group">
                                 <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_news" id="kmdn_news">金門新聞</a>
                                 <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_weather" id="kmdn_weather">金門氣象</a>
+                                <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_radar" id="kmdn_radar">天氣雷達回波</a>
+                                <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_radar" id="kmdn_uv">紫外線指數</a>
                         </div>
                 </div>
                 <div class="container" id="stores" style="display:none">
@@ -258,6 +274,38 @@ $(document).ready(function(){
                                         </div>
                                         <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                </div>
+
+                        </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal_radar" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title" id="modal_title_img">雷達回波</h4>
+                                        </div>
+                                        <div id="div_img">
+                                        </div>
+                                </div>
+
+                        </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal_uv" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">紫外線指數</h4>
+                                        </div>
+                                        <div id="div_uv">
                                         </div>
                                 </div>
 

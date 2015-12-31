@@ -141,6 +141,35 @@ Parse.Cloud.define("getAllStore", function(request, response) {
     });
 });
 
+Parse.Cloud.define("getRadar", function(request, response) {
+    var info = "";
+    if(request.params.id == "kmdn_radar")
+    {
+        info = "RadarInfo";
+    }
+    else if(request.params.id == "kmdn_uv")
+    {
+        info = "UVInfo";
+    }
+    query = query_all(info);
+    query.first({
+      success: function(data) {
+        ret = {
+            "status" : 0,
+            "data" : data
+        }
+        response.success(data);
+      },
+      error: function(error) {
+        ret = { 
+            "status" : -1,
+            "msg" : "Error: " + error.code + " " + error.message
+        };
+        response.error(ret);
+      }
+    });
+});
+
 Parse.Cloud.define("getWeather", function(request, response) {
     
     query = query_all("WeatherInfo");

@@ -150,6 +150,18 @@ Kmdn.prototype.openStore = function()
         callCloud("getAllStore", {}, cbk_store);
 }
 
+Kmdn.prototype.openRadar = function(id, title)
+{
+    function cbk_radar(data)
+    {
+            var img = $("<img>", {"src" : data.get("title")})
+            $("#div_img").append(img);
+    }
+    $("#modal_title_img").html(title);
+    $("#div_img").empty();
+    callCloud("getRadar", {"id": id}, cbk_radar);
+}
+
 Kmdn.prototype.openWeather = function()
 {
     function cbk_weather(data)
