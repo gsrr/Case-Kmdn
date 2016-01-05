@@ -1,7 +1,7 @@
 
+Parse.initialize("mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT", "2Xpjqqtz71ab31Hp9jHRARW7t7jaaBjjnZRJy77o");
 function callCloud(func, paraList, callback)
 {
-    Parse.initialize("mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT", "2Xpjqqtz71ab31Hp9jHRARW7t7jaaBjjnZRJy77o");
     Parse.Cloud.run(func, paraList,{
         success: function(data) {
             callback(data);
@@ -14,7 +14,6 @@ function callCloud(func, paraList, callback)
 
 function test(class_name, key, value)
 {
-    Parse.initialize("mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT", "2Xpjqqtz71ab31Hp9jHRARW7t7jaaBjjnZRJy77o");
     var GameScore = Parse.Object.extend(class_name);
     var query = new Parse.Query(GameScore);
     query.equalTo( key, value);

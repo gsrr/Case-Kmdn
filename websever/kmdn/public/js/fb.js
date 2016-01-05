@@ -1,5 +1,4 @@
 
-Parse.initialize("mpuTWZgtQanqfCdO8IWJEJbHTZoQq97h6pG2qhGT", "2Xpjqqtz71ab31Hp9jHRARW7t7jaaBjjnZRJy77o");
 function myFacebookLogout()
 {
         console.log(Parse.User.current());
@@ -12,7 +11,6 @@ function myFacebookLogout()
 }
 function myFacebookLogin()
 {
-        alert("myFacebookLogin");
         Parse.FacebookUtils.logIn("email", {
                 success: function(user) {
                         if (!user.existed()) 

@@ -1,134 +1,346 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
         <head>
-                <title>KMDN</title>
-                <meta charset="utf-8">
+                <title>Bootstrap Example</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-                <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-                <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
                 <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+                <link rel="stylesheet" href="css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
                 <script type="text/javascript" src="js/parse_lib.js"></script>
-                <script type="text/javascript" src="js/kmdn.js"></script>
                 <script type="text/javascript" src="js/fb.js"></script>
-                <style>
-.center {
-        margin: auto;
-        width: 60%;
-                #border:3px solid #8AC007;
-        padding: 10px;
-}
-         .outRange{
-                 margin-top:50px;
-         }
-         .func {
-                 margin: 10px;
-         }
-         #feedback { font-size: 1.4em; }
-         #selectable .ui-selecting { background: #FECA40; }
-         #selectable .ui-selected { background: #F39814; color: white; }
-         #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-         #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
-         #login_btn{
-                 backgroundColor: #6699ff,
-                 color: rgb(255, 255, 255),
-         }
-                </style>
+                <script type="text/javascript" src="js/kmdn.js"></script>
                 <script>
 
+/*
+function showKmdnInfo(){
+$("#bodyInfo").append($("<div/>").addClass("row").append($("<button/>").html("test")));
+}
+ */
 
-
-
-
-
-
-        function open_news()
+function showKmdn(name, id)
+{
+        $(".kmdnBar").removeClass("active");
+        $("#" + id).addClass("active");
+        var bars = ["infos", "stores", "buyRecord", "soldRecord"];
+        for(var i = 0 ; i < bars.length ; i++)
         {
-                var kmdn = new Kmdn();
-                kmdn.openNews();
-        }
-        function open_store()
-        {
-                var kmdn = new Kmdn();
-                kmdn.openStore();
-        }
-        function open_movie()
-        {
-                var kmdn = new Kmdn();
-                kmdn.openMovie();
-        }
-        function buyGoods()
-        {
-                alert("buyGoods");
-                var kmdn = new Kmdn();
-                kmdn.buyGoods($(this).attr("id"), "test");
-        }
-        function open_trans()
-        {
-                alert("open_trans");
-                var kmdn = new Kmdn();
-                kmdn.openTrans();
-        }
-        function verify_objectId()
-        {
-                alert("verify_code");
-                var kmdn = new Kmdn();
-                kmdn.verifyObjectId("vYe0iL2i5F");
-        }
-        $("document").ready(function(){
-                function createButton(buttons)
+                console.log(bars[i]);
+                if(bars[i] == name)
                 {
-                        for(var i = 0 ; i < buttons.length ; i++)
-                        {
-                                console.log(buttons[i]);
-                                $("#bts").append($("<button class=\"func\"></button>").html(buttons[i]));
-
-                        }
-                        $("button").button();
+                        $("#" + bars[i]).show();
 
                 }
+                else
+                {
+                        $("#" + bars[i]).hide();
+                }
+        }
+}
 
-                $( ".selector" ).selectable({
-                        selected: function( event, ui ){}
-                });
-                $( "button" ).button();
-                $("#login_btn").css("color",'blue');
-                $("#logout_btn").css("color",'blue');
-                $("#logout_btn").hide();
 
-                $("#kmdn_news").click(open_news);
-                $("#kmdn_movie").click(open_movie);
-                $("#exchange").click(open_store);
-                $(".goods").click(buyGoods);
-                $("#kmdn_trans").click(open_trans);
-                $("#kmdn_verifyObjectId").click(verify_objectId);
-        });
+function kmdnInfo()
+{
+        showKmdn("infos", "kmdnInfo");
+}
+
+function kmdnStore()
+{
+        var kmdn = new Kmdn();
+        kmdn.openStore();
+        showKmdn("stores", "kmdnStore");
+}
+
+
+function buyGood()
+{
+        alert("buyGoods");
+        var kmdn = new Kmdn();
+        kmdn.buyGoods($(this).attr("id"));
+}
+
+function buyTrans()
+{
+        showKmdn("buyRecord", "buyTrans");
+        var kmdn = new Kmdn();
+        kmdn.openTrans();
+
+}
+function verify_objectId()
+{
+        alert("verify_code");
+        var kmdn = new Kmdn();
+        kmdn.verifyObjectId($(this).attr("id"));
+}
+
+function soldTrans()
+{
+        showKmdn("soldRecord", "soldTrans");
+        var kmdn = new Kmdn();
+        kmdn.soldTrans();
+}
+
+function kmdn_login()
+{
+        alert("call kmdn_login");
+        myFacebookLogin();
+}
+
+function kmdn_logout()
+{
+        alert("call kmdn_logout");
+        myFacebookLogout();
+}
+
+function kmdnNews()
+{
+        var kmdn = new Kmdn();
+        kmdn.openNews();
+
+}
+
+function kmdnWeather()
+{
+        var kmdn = new Kmdn();
+        kmdn.openWeather();
+
+}
+function kmdnRadar(id, title)
+{
+        var kmdn = new Kmdn();
+        kmdn.openRadar(id, title);
+
+}
+
+$(document).ready(function(){
+        if (Parse.User.current() != null)
+        {
+                Parse.User.current().fetch();
+                var user = Parse.User.current();
+                $("#user_id").html(user.get("displayName") + "(" + user.get("points") + ")");
+                $("#kmdn_login").hide();
+                $("#kmdn_logout").show();
+        }
+        else
+        {
+
+                $("#kmdn_login").show();
+                $("#kmdn_logout").hide();
+        }
+
+        function showInfos()
+        {
+                $(".infos").removeClass("active");
+                $(this).addClass("active");
+                var id = $(this).attr("id");
+                if(id == "kmdn_news")
+                {
+                        kmdnNews();
+                }
+                else if (id == "kmdn_weather")
+                {
+                        kmdnWeather();
+                }
+                else if (id == "kmdn_radar")
+                {
+                        kmdnRadar(id, "雷達回波");
+                }
+                else if (id == "kmdn_uv")
+                {
+                        kmdnRadar(id, "紫外線指數");
+                }
+        }
+
+
+        $("#kmdnInfo").click(kmdnInfo);
+        $("#kmdnStore").click(kmdnStore);
+        $(".infos").click(showInfos);
+        $("#buyTrans").click(buyTrans);
+        $("#soldTrans").click(soldTrans);
+        $("#kmdn_login").click(kmdn_login);
+        $("#kmdn_logout").click(kmdn_logout);
+
+});
                 </script>
         </head>
         <body>
-                <div class="w3-padding w3-xlarge w3-teal center outRange">
-                        <button id="login_btn" onclick="myFacebookLogin()" style="color:#ffffff; background-color:#6699ff;">Login with Facebook</button>
-                        <label id="user"></label>
-                        <label id="user_points"></label>
-                        <button id="logout_btn" onclick="myFacebookLogout()" style="color:#ffffff; background-color:#6699ff;">Logout</button>
+                <nav class="navbar navbar-inverse">
+                        <div class="container">
+                                <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span> 
+                                        </button>
+                                        <a class="navbar-brand" href="#">WebSiteName</a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="myNavbar">
+                                        <ul class="nav navbar-nav">
+                                                <li class="kmdnBar active" id="kmdnInfo"><a href="#">金門資訊</a></li>
+                                                <li class="kmdnBar" id="kmdnStore"><a href="#">金門購物</a></li>
+                                                <li class="kmdnBar" id="buyTrans"><a href="#">購買紀錄</a></li> 
+                                                <li class="kmdnBar" id="soldTrans"><a href="#">售貨紀錄</a></li> 
+                                        </ul>
+                                        <ul class="nav navbar-nav navbar-right">
+                                                <!--                                                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+                                                <li><a href="#" id="user_id"></a></li>
+                                                <li><a href="#" id="kmdn_login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                                                <li><a href="#" id="kmdn_logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                                        </ul>
+                                </div>
+                        </div>
+                </nav>
+                <div class="container" id="infos">
+                        <div class="list-group">
+                                <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_news" id="kmdn_news">金門新聞</a>
+                                <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_weather" id="kmdn_weather">金門氣象</a>
+                                <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_radar" id="kmdn_radar">天氣雷達回波</a>
+                                <a href="#" class="list-group-item infos" data-toggle="modal" data-target="#modal_radar" id="kmdn_uv">紫外線指數</a>
+                        </div>
                 </div>
-                <div id="bts" class="w3-container center">
-                        <ol id="selectable">
-                                <li class="ui-widget-content" id="kmdn_news">金門日報</li>
-                                <li class="ui-widget-content" id="exchange">兌換物品</li>
-                                <li class="ui-widget-content" id="kmdn_movie">金門獅城</li>
-                                <li class="ui-widget-content goods" id="Jo76pFEnPI" >電影票</li>
-                                <li class="ui-widget-content goods" id="2lQ9reg5aI" >電影票+爆米花</li>
-                                <li class="ui-widget-content" id="kmdn_trans">交易紀錄</li>
-                                <li class="ui-widget-content" id="kmdn_verifyObjectId">驗證代碼</li>
-                                <li class="ui-widget-content" id="test_module">test Module</li>
-                                <li class="ui-widget-content">Item 7</li>
-                        </ol>
+                <div class="container" id="stores" style="display:none">
+                        <div class="list-group" id="list_store">
+                        </div>
                 </div>
-                <div class="w3-container center">
-                        <button class="w3-jumbo w3-btn w3-teal">A-1</button>
-                        <button class="w3-jumbo w3-btn w3-teal">A-2</button>
-                        <button class="w3-jumbo w3-btn w3-teal">A-3</button>
+                <div class="container" id="buyRecord" style="display:none">
+                        <div class="table-responsive">
+                                <table class="table table-bordered table-hover" id="tb_buyRecord">
+                                        <thead>
+                                                <tr>
+                                                        <th>狀態</th>
+                                                        <th>購買商品</th>
+                                                        <th>商家</th>
+                                                        <th>點數</th>
+                                                        <th>購買時間</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                </table>
+                        </div>
+                </div>
+                <div class="container" id="soldRecord" style="display:none">
+                        <div class="table-responsive">
+                                <table class="table table-bordered table-hover" id="tb_soldRecord">
+                                        <thead>
+                                                <tr>
+                                                        <th>狀態</th>
+                                                        <th>消費者</th>
+                                                        <th>購買商品</th>
+                                                        <th>點數</th>
+                                                        <th>購買時間</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                </table>
+                        </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal_news" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">金門新聞</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div class="panel-group" id="accordion_news">
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                </div>
+
+                        </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal_weather" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">金門氣象</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div class="table-responsive" id="tb_weather">
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                </div>
+
+                        </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal_radar" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title" id="modal_title_img">雷達回波</h4>
+                                        </div>
+                                        <div id="div_img">
+                                        </div>
+                                </div>
+
+                        </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal_uv" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">紫外線指數</h4>
+                                        </div>
+                                        <div id="div_uv">
+                                        </div>
+                                </div>
+
+                        </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal_store" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title" id="modal_store_title">金門獅城</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div class="table-responsive">
+                                                        <table class="table" id="tb_storeTable">
+                                                                <thead>
+                                                                        <tr>
+                                                                                <th>商品名稱</th>
+                                                                                <th>點數</th>
+                                                                        </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                        </table>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                </div>
+
+                        </div>
                 </div>
         </body>
 </html>
