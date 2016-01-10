@@ -13,38 +13,42 @@ classMap = {
     "kmdn_uv" : "/1/classes/UVInfo",
 }
 
-def queryData(name, id_name):
-    connection = httplib.HTTPSConnection('api.parse.com', 443)
-    connection.connect()
-    connection.request('GET', classMap[name], '', {
-        "X-Parse-Application-Id": App_id,
-        "X-Parse-REST-API-Key": Api_key,
-    })
-    data = json.loads(connection.getresponse().read())
-    cont_list = []
-    for line in data['results']:
-        cont_list.append(line[id_name])
-    return cont_list
+class Parse:
+    def __init__(self, className):
+        self.connection = httplib.HTTPSConnection('api.parse.com', 443)
+        self.connection.connect()
+        self.name = className 
+        self.parseId = {
+            "X-Parse-Application-Id": App_id,
+            "X-Parse-REST-API-Key": Api_key,
+        }
 
-def insertData(name, data, titles):
-    data["title"] = data["title"].decode("utf-8")
-    if data["title"] in titles:
-        return {'status' : 1, 'msg': "Already exist"}
-    connection = httplib.HTTPSConnection('api.parse.com', 443)
-    connection.connect()
-    connection.request('POST', classMap[name], json.dumps(data), 
-    {
-        "X-Parse-Application-Id": App_id,
-        "X-Parse-REST-API-Key": Api_key,
-        "Content-Type": "application/json"
-    })
-    results = json.loads(connection.getresponse().read())
-    print results
+    def query(self):
+        self.connection.request('GET', classMap[self.name], '', self.parseId)
+        data = json.loads(self.connection.getresponse().read())
+        return data['results']
 
+    def delete(self):
+        data = self.query()
+        for item in data:
+            path = classMap[self.name] + "/" + item['objectId']
+            self.connection.request("DELETE", path, '', self.parseId)
+            result = json.loads(self.connection.getresponse().read())
+    
+    def insert(self, data):
+        self.connection.request('POST', classMap[self.name], json.dumps(data), 
+        {
+            "X-Parse-Application-Id": App_id,
+            "X-Parse-REST-API-Key": Api_key,
+            "Content-Type": "application/json"
+        })
+        results = json.loads(self.connection.getresponse().read())
+        return str(results)
 
 def main(name):
     try:
-        cont_list = queryData(name, "title")
+        parse = Parse(name)
+        parse.delete()
         with open("result//" + name + ".result" , "r") as fr:
             lines = fr.readlines()
             cnt = 0
@@ -60,7 +64,7 @@ def main(name):
                         value = arrline[1]
                         data[key] = value
                         cnt += 1
-                    print insertData(name, data, cont_list)
+                    print "upload data:" + parse.insert(data)
                 else:
                     cnt += 1
     except:
@@ -68,6 +72,6 @@ def main(name):
 
 
 if __name__ == "__main__":
-    #main("kmdn_news")
+    main("kmdn_news")
     #main("kmdn_weather")
-    main(sys.argv[1])
+    #main(sys.argv[1])

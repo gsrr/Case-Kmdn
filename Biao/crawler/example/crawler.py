@@ -8,6 +8,7 @@ import os
 import sys
 sys.path.append("myparser")
 
+import upload_data
 
 Modules = {}
 
@@ -61,7 +62,10 @@ def main():
             if line and line[0] != "#":
                 title = line.split()[0]
                 url = line.split()[1]
+                print "Crawl page:" + title
                 start_crawl(title, url)
+            print "Upload data:" + title
+            upload_data.main(title)
     except:
         print traceback.format_exc()
 
